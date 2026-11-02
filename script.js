@@ -96,3 +96,12 @@ if (intro) {
   // Always reveal the page even if an asset or browser API stalls.
   setTimeout(finishIntro, 4500);
 }
+
+menu.querySelectorAll('a[href]').forEach(link => link.addEventListener('click', () => {
+  const target = new URL(link.href);
+  if (target.pathname === location.pathname && target.hash) {
+    menuAnimation?.cancel();
+    menu.close();
+    menuClosing = false;
+  }
+}));
